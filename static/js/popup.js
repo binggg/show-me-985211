@@ -145,7 +145,7 @@
       onCancel: function() {
         showMe985211.base.getConfig(function(val) {
           var config = val.config;
-          
+
           me.form = config;
         });
       },

@@ -73,6 +73,15 @@
           <el-form-item label="" v-show="form.needKeywords">
             <el-input type="textarea" v-model="form.keywordsContent" placeholder="请输入关键词，用','或空格分割;如：百度,阿里"></el-input>
           </el-form-item>
+          <el-form-item label="屏蔽词">
+            <el-switch
+              v-model="form.needIgnoreKeywords"
+              active-text="是否开启关键词黑名单">
+            </el-switch>
+          </el-form-item>
+          <el-form-item label="" v-show="form.needIgnoreKeywords">
+            <el-input type="textarea" v-model="form.ignoreKeywordsContent" placeholder="请输入关键词黑名单，用','或空格分割;"></el-input>
+          </el-form-item>
           <el-form-item label="学历">
             <el-select v-model="form.edu" placeholder="按学历筛选">
               <el-option label="至少本科" value="bachelor"></el-option>
@@ -93,6 +102,12 @@
             <el-tooltip v-show="form.age === 'manual'" class="item" effect="dark" content="配置为0，则不限最小/最大年龄" placement="bottom-end">
               <i class="el-icon-info"></i>
             </el-tooltip>
+          </el-form-item>
+          <el-form-item label="自动滚动">
+            <el-switch
+              v-model="form.autoScroll"
+              active-text="是否开启自动滚动">
+            </el-switch>
           </el-form-item>
           <el-form-item label="" v-if="form.age == 'manual'">
             <el-input v-model="form.ageMin" placeholder="最小年龄（整数）" class="multi-input"></el-input>
