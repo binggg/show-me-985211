@@ -103,12 +103,6 @@
               <i class="el-icon-info"></i>
             </el-tooltip>
           </el-form-item>
-          <el-form-item label="自动滚动">
-            <el-switch
-              v-model="form.autoScroll"
-              active-text="是否开启自动滚动">
-            </el-switch>
-          </el-form-item>
           <el-form-item label="" v-if="form.age == 'manual'">
             <el-input v-model="form.ageMin" placeholder="最小年龄（整数）" class="multi-input"></el-input>
             <span class="multi-input-mid">-</span>

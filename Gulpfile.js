@@ -56,13 +56,13 @@ gulp.task('copy-js', function() {
 });
 gulp.task('uglify', function() {
   return gulp.src(paths.dev.js)
-    .pipe(uglify({
-      output: {
-        beautify: false,
-        indent_level: 0,
-        ascii_only: true
-      }
-    }))
+    // .pipe(uglify({
+    //   output: {
+    //     beautify: false,
+    //     indent_level: 0,
+    //     ascii_only: true
+    //   }
+    // }))
     .pipe(gulp.dest(paths.dist.js))
 });
 

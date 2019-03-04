@@ -207,7 +207,6 @@ showMe985211.core = (function () {
   }
   core.prototype.bindAutoScroll = function () {
     var me = this
-    if (!me.appConfig.autoScroll) return
     var el
     var timer
     if (window.location.host === 'www.zhipin.com') {
@@ -224,17 +223,23 @@ showMe985211.core = (function () {
                 scrollTop = el.scrollTop
                 el.scrollBy(0, 1000, {})
             }
-        }, 500)
+        }, 1000)
     }
 
     function stopScroll () {
         clearInterval(timer)
     }
 
-    startScroll()
-
-    // document.addEventListener('mousemove', stopScroll)
-    // document.addEventListener('dbclick', startScroll)
+    var scrollOpening = false
+    document.addEventListener('keydown', function (e){
+        if (e.keyCode !== 32) return
+        if (!scrollOpening) {
+            startScroll()
+        } else {
+            stopScroll()
+        }
+        scrollOpening = !scrollOpening
+    })
   }
   core.prototype.generator = function (config) {
     var me = this

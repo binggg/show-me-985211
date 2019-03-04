@@ -207,44 +207,38 @@ showMe985211.core = (function () {
   }
   core.prototype.bindAutoScroll = function () {
     var me = this
-    if (!me.appConfig.autoScroll) return
     var el
     var timer
     if (window.location.host === 'www.zhipin.com') {
-      el = document.querySelector('#container')
+        el = document.querySelector('#container')
     }
 
     function startScroll () {
-      console.log('startScroll')
-      stopScroll()
-      scrollTop = 0
-      timer = setInterval(() => {
-        if (scrollTop > 0 && scrollTop === el.scrollTop) {
-          stopScroll()
-        } else {
-          scrollTop = el.scrollTop
-          el.scrollBy(0, 1000, {})
-        }
-      }, 1000)
+        stopScroll()
+        scrollTop = 0
+        timer = setInterval(() => {
+            if (scrollTop > 0 &&scrollTop === el.scrollTop) {
+                stopScroll()
+            } else {
+                scrollTop = el.scrollTop
+                el.scrollBy(0, 1000, {})
+            }
+        }, 1000)
     }
 
     function stopScroll () {
-      console.log('stopScroll')
-      clearInterval(timer)
+        clearInterval(timer)
     }
 
-    var flag = true
-    document.addEventListener('keydown', function (e) {
-      if (e.keyCode !== 32) {
-          return
-      }
-      if (flag) {
-        startScroll()
-      // alt + s
-      } else {
-        stopScroll()
-      }
-      flag = !flag
+    var scrollOpening = false
+    document.addEventListener('keydown', function (e){
+        if (e.keyCode !== 32) return
+        if (!scrollOpening) {
+            startScroll()
+        } else {
+            stopScroll()
+        }
+        scrollOpening = !scrollOpening
     })
   }
   core.prototype.generator = function (config) {

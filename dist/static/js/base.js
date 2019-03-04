@@ -42,7 +42,6 @@ showMe985211.base = (function () {
       needIgnoreKeywords: false,
       ignoreKeywordsContent: '',
       autoSayhi: 'auto',
-      autoScroll: false,
       // bachelor: 至少本科；master: 至少硕士；doctor: 至少博士
       edu: 'bachelor',
       age: '-1',
